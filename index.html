@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- 検索エンジン避け：公開URLを知っている人だけが見る前提 -->
+<meta name="robots" content="noindex, nofollow">
+<title>千畳敷カール トレッキング旅行 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* ─────────────────────────────────────────
+     カラートークン（アルパインモダン）
+     ライト：雪白ベース × 深青緑 × 山吹
+     ダーク：山の夜ベース × 淡青緑 × 金
+     選定理由：屋外の直射日光下（ライト）と
+     宿の夜（ダーク）の両方で読みやすくするため
+  ───────────────────────────────────────── */
+  :root {
+    --bg: #f4f6f4;
+    --bg-hero-top: #aecfdd;
+    --bg-hero-bottom: #e8eff0;
+    --ridge-far: #7ba3b0;
+    --ridge-near: #2e5c66;
+    --card: #ffffff;
+    --card-border: rgba(46,92,102,0.14);
+    --ink: #1d2f33;
+    --ink-sub: #5d7176;
+    --primary: #1d5f6b;
+    --primary-soft: rgba(29,95,107,0.08);
+    --accent: #d99123;
+    --accent-soft: rgba(217,145,35,0.12);
+    --line: rgba(29,95,107,0.22);
+    --now: #d99123;
+    --shadow: 0 2px 12px rgba(29,63,70,0.08);
+    --nav-bg: rgba(255,255,255,0.92);
+    --hero-ink: #16333b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d181c;
+      --bg-hero-top: #0a1420;
+      --bg-hero-bottom: #0d181c;
+      --ridge-far: #1c3038;
+      --ridge-near: #14242b;
+      --card: rgba(255,255,255,0.055);
+      --card-border: rgba(139,199,206,0.16);
+      --ink: #e6ecec;
+      --ink-sub: #8fa3a6;
+      --primary: #7cc4cc;
+      --primary-soft: rgba(124,196,204,0.10);
+      --accent: #e0b45c;
+      --accent-soft: rgba(224,180,92,0.14);
+      --line: rgba(124,196,204,0.25);
+      --now: #e0b45c;
+      --shadow: none;
+      --nav-bg: rgba(13,24,28,0.92);
+      --hero-ink: #dbe7e9;
+    }
+  }
+  /* 手動切替（autoのときはdata-theme無し＝上のメディアクエリに従う） */
+  html[data-theme="light"] {
+    --bg:#f4f6f4; --bg-hero-top:#aecfdd; --bg-hero-bottom:#e8eff0;
+    --ridge-far:#7ba3b0; --ridge-near:#2e5c66;
+    --card:#ffffff; --card-border:rgba(46,92,102,0.14);
+    --ink:#1d2f33; --ink-sub:#5d7176;
+    --primary:#1d5f6b; --primary-soft:rgba(29,95,107,0.08);
+    --accent:#d99123; --accent-soft:rgba(217,145,35,0.12);
+    --line:rgba(29,95,107,0.22); --now:#d99123;
+    --shadow:0 2px 12px rgba(29,63,70,0.08);
+    --nav-bg:rgba(255,255,255,0.92); --hero-ink:#16333b;
+  }
+  html[data-theme="dark"] {
+    --bg:#0d181c; --bg-hero-top:#0a1420; --bg-hero-bottom:#0d181c;
+    --ridge-far:#1c3038; --ridge-near:#14242b;
+    --card:rgba(255,255,255,0.055); --card-border:rgba(139,199,206,0.16);
+    --ink:#e6ecec; --ink-sub:#8fa3a6;
+    --primary:#7cc4cc; --primary-soft:rgba(124,196,204,0.10);
+    --accent:#e0b45c; --accent-soft:rgba(224,180,92,0.14);
+    --line:rgba(124,196,204,0.25); --now:#e0b45c;
+    --shadow:none;
+    --nav-bg:rgba(13,24,28,0.92); --hero-ink:#dbe7e9;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:'Noto Sans JP', sans-serif;
+    background:var(--bg); color:var(--ink);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    /* 下部タブに隠れないよう余白（セーフエリア込み） */
+    padding-bottom: calc(74px + env(safe-area-inset-bottom));
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position:relative; text-align:center;
+    padding: 48px 20px 0;
+    background:linear-gradient(180deg, var(--bg-hero-top) 0%, var(--bg-hero-bottom) 100%);
+    overflow:hidden;
+  }
+  .hero-inner { position:relative; z-index:2; padding-bottom:86px; }
+  .hero-dates {
+    font-family:'Shippori Mincho', serif;
+    font-size:13px; letter-spacing:3px; color:var(--primary);
+    margin-bottom:10px;
+  }
+  .hero-title {
+    font-family:'Shippori Mincho', serif;
+    font-size:30px; line-height:1.35; color:var(--hero-ink);
+    margin-bottom:6px;
+  }
+  .hero-sub { font-size:13px; color:var(--ink-sub); letter-spacing:1px; }
+  .hero-count {
+    display:inline-block; margin-top:16px;
+    font-size:13px; font-weight:700; letter-spacing:1px;
+    color:var(--accent); background:var(--accent-soft);
+    border:1px solid var(--accent); border-radius:999px;
+    padding:6px 18px;
+  }
+  .hero-svg { position:absolute; left:0; right:0; bottom:-1px; width:100%; height:90px; z-index:1; display:block; }
+  .theme-btn {
+    position:absolute; top:14px; right:14px; z-index:3;
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:999px; width:38px; height:38px;
+    font-size:17px; cursor:pointer; box-shadow:var(--shadow);
+  }
+
+  /* ── 天気ストリップ ── */
+  .weather { max-width:520px; margin:14px auto 0; padding:0 16px; display:none; }
+  .weather.show { display:block; }
+  .weather-cards { display:flex; gap:8px; }
+  .wcard {
+    flex:1; background:var(--card); border:1px solid var(--card-border);
+    border-radius:12px; padding:10px 8px; text-align:center; box-shadow:var(--shadow);
+  }
+  .wcard .wl { font-size:11px; color:var(--ink-sub); letter-spacing:.5px; }
+  .wcard .wi { font-size:24px; margin:2px 0; }
+  .wcard .wt { font-size:12px; font-weight:700; color:var(--ink); }
+  .wcard .wt .lo { color:var(--ink-sub); font-weight:400; }
+  .wcard .wp { font-size:10px; color:var(--primary); margin-top:2px; }
+  .weather-note { font-size:10px; color:var(--ink-sub); text-align:right; margin-top:4px; opacity:.7; }
+
+  /* ── NEXTチップ（当日のみ） ── */
+  .next-chip {
+    max-width:520px; margin:12px auto 0; padding:0 16px; display:none;
+  }
+  .next-chip.show { display:block; }
+  .next-chip .inner {
+    display:flex; align-items:center; gap:8px;
+    background:var(--accent-soft); border:1px dashed var(--accent);
+    color:var(--ink); border-radius:12px; padding:10px 14px; font-size:13px;
+  }
+  .next-chip .lbl { font-weight:700; color:var(--accent); font-size:11px; letter-spacing:1px; }
+
+  /* ── 日タイトル ── */
+  .day-head { max-width:520px; margin:22px auto 4px; padding:0 20px; }
+  .day-head h2 {
+    font-family:'Shippori Mincho', serif; font-size:20px; color:var(--ink);
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .day-head .d-date { font-size:13px; color:var(--accent); letter-spacing:1px; }
+  .day-head p { font-size:12px; color:var(--ink-sub); margin-top:4px; }
+
+  /* ── タイムライン ── */
+  .timeline { max-width:520px; margin:0 auto; padding:18px 16px 40px; position:relative; }
+  .timeline::before {
+    content:''; position:absolute; left:30px; top:10px; bottom:20px; width:2px;
+    background:linear-gradient(180deg, transparent, var(--line) 6%, var(--line) 94%, transparent);
+  }
+
+  .event { position:relative; margin-bottom:16px; padding-left:50px; }
+  .event-dot {
+    position:absolute; left:22px; top:20px; width:18px; height:18px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--primary);
+    display:flex; align-items:center; justify-content:center; z-index:1;
+  }
+  .event-dot::after { content:''; width:7px; height:7px; border-radius:50%; background:var(--primary); }
+  .event.hl .event-dot { border-color:var(--accent); box-shadow:0 0 10px var(--accent-soft); }
+  .event.hl .event-dot::after { background:var(--accent); }
+
+  .event-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:14px; padding:14px 16px 12px; box-shadow:var(--shadow);
+    cursor:default; transition:border-color .2s;
+  }
+  .event.hl .event-card { background:var(--accent-soft); border-color:var(--accent); }
+  .event.has-note .event-card { cursor:pointer; }
+
+  .event-time { font-size:12px; font-weight:700; letter-spacing:1px; color:var(--primary); }
+  .event.hl .event-time { color:var(--accent); }
+  .event-head { display:flex; align-items:flex-start; gap:9px; margin-top:3px; }
+  .event-icon { font-size:21px; line-height:1.3; flex-shrink:0; }
+  .event-name { font-size:15.5px; font-weight:700; line-height:1.4; }
+  .event-meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; align-items:center; }
+  .tag {
+    font-size:10.5px; color:var(--primary); background:var(--primary-soft);
+    padding:2px 9px; border-radius:5px; letter-spacing:.5px;
+  }
+  .tag.gold { color:var(--accent); background:var(--accent-soft); }
+  .maplink {
+    font-size:11.5px; color:var(--primary); text-decoration:none;
+    border:1px solid var(--line); border-radius:999px; padding:3px 11px;
+    display:inline-flex; align-items:center; gap:4px;
+  }
+  .maplink:active { background:var(--primary-soft); }
+  .note-hint { font-size:10.5px; color:var(--ink-sub); margin-left:auto; opacity:.8; }
+  .event-note {
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+    font-size:12.5px; color:var(--ink-sub); line-height:1.75;
+  }
+  .event.open .event-note { max-height:400px; }
+  .event-note .note-inner { padding-top:10px; border-top:1px dashed var(--line); margin-top:10px; }
+  .event-note b { color:var(--ink); }
+  .event-note a { color:var(--primary); }
+
+  /* いまハイライト */
+  .event.now .event-card { outline:2px solid var(--now); outline-offset:2px; }
+  .now-badge {
+    display:inline-block; font-size:10px; font-weight:700; color:#fff;
+    background:var(--now); border-radius:4px; padding:1px 7px; margin-left:8px;
+    letter-spacing:1px; vertical-align:2px;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.55} }
+
+  /* 移動セパレータ */
+  .move { position:relative; margin-bottom:16px; padding-left:50px; }
+  .move-dot {
+    position:absolute; left:27px; top:9px; width:8px; height:8px; border-radius:50%;
+    background:var(--bg); border:1.5px solid var(--line); z-index:1;
+  }
+  .move-content { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--ink-sub); padding:3px 0; }
+  .move-line { flex:1; height:1px; background:var(--line); opacity:.5; }
+  .move-time { font-size:11px; opacity:.8; }
+
+  /* ── チェックリスト ── */
+  .check-wrap { max-width:520px; margin:0 auto; padding:10px 20px 40px; }
+  .check-progress {
+    background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:14px 16px; margin-bottom:18px; box-shadow:var(--shadow);
+  }
+  .check-progress .cp-label { font-size:12px; color:var(--ink-sub); display:flex; justify-content:space-between; }
+  .cp-bar { height:8px; background:var(--primary-soft); border-radius:99px; margin-top:8px; overflow:hidden; }
+  .cp-fill { height:100%; background:linear-gradient(90deg, var(--primary), var(--accent)); border-radius:99px; width:0%; transition:width .3s; }
+  .check-group { margin-bottom:22px; }
+  .check-group h3 {
+    font-family:'Shippori Mincho', serif; font-size:15px; color:var(--ink);
+    margin-bottom:10px; display:flex; align-items:center; gap:8px;
+  }
+  .check-item {
+    display:flex; align-items:center; gap:12px;
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:11px; padding:11px 14px; margin-bottom:7px;
+    font-size:13.5px; cursor:pointer; user-select:none; box-shadow:var(--shadow);
+  }
+  .check-item .box {
+    width:20px; height:20px; border-radius:6px; border:2px solid var(--line);
+    flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    font-size:13px; color:#fff; transition:all .15s;
+  }
+  .check-item.done .box { background:var(--primary); border-color:var(--primary); }
+  .check-item.done { opacity:.55; }
+  .check-item.done .ci-label { text-decoration:line-through; }
+  .check-item .ci-note { font-size:11px; color:var(--ink-sub); margin-top:1px; }
+  .check-reset {
+    display:block; margin:8px auto 0; font-size:12px; color:var(--ink-sub);
+    background:none; border:1px solid var(--line); border-radius:999px;
+    padding:7px 20px; cursor:pointer;
+  }
+
+  /* ── 下部タブ ── */
+  .tabbar {
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    display:flex; justify-content:space-around;
+    background:var(--nav-bg); backdrop-filter:blur(12px);
+    border-top:1px solid var(--card-border);
+    padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+  }
+  .tab {
+    flex:1; max-width:120px; text-align:center; background:none; border:none;
+    color:var(--ink-sub); font-family:inherit; font-size:10.5px; cursor:pointer;
+    padding:5px 0 3px; border-radius:12px; letter-spacing:.5px;
+  }
+  .tab .t-icon { display:block; font-size:20px; margin-bottom:2px; filter:grayscale(.6); opacity:.75; }
+  .tab.active { color:var(--primary); font-weight:700; }
+  .tab.active .t-icon { filter:none; opacity:1; }
+  .tab.active .t-label { border-bottom:2px solid var(--accent); padding-bottom:1px; }
+
+  .footer { text-align:center; font-size:11px; color:var(--ink-sub); opacity:.55; padding:10px 20px 26px; letter-spacing:.5px; }
+
+  .view { display:none; }
+  .view.active { display:block; animation:fadein .25s ease; }
+  @keyframes fadein { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
+
+  @media (min-width:600px) {
+    .hero-title { font-size:38px; }
+    .hero-svg { height:120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Hero ── -->
+<header class="hero">
+  <button class="theme-btn" id="themeBtn" title="表示テーマ切替">🌗</button>
+  <div class="hero-inner">
+    <p class="hero-dates">2026.7.21 TUE — 7.23 THU</p>
+    <h1 class="hero-title">千畳敷カール<br>トレッキング旅行</h1>
+    <p class="hero-sub">木曽駒ヶ岳 2,956m と 諏訪をめぐる三日間</p>
+    <div class="hero-count" id="countdown"></div>
+  </div>
+  <!-- 山稜シルエット（遠景・近景の2層） -->
+  <svg class="hero-svg" viewBox="0 0 375 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,60 L40,38 L75,52 L120,22 L160,45 L200,30 L240,50 L285,25 L330,48 L375,35 L375,90 L0,90 Z" fill="var(--ridge-far)" opacity="0.55"/>
+    <path d="M0,75 L50,52 L95,68 L150,40 L195,62 L250,44 L300,66 L345,52 L375,60 L375,90 L0,90 Z" fill="var(--ridge-near)"/>
+  </svg>
+</header>
+
+<!-- 天気（オンライン時のみ表示） -->
+<section class="weather" id="weather"></section>
+
+<!-- 当日のNEXT表示 -->
+<section class="next-chip" id="nextChip"></section>
+
+<!-- 日別ビュー（JSが生成） -->
+<main id="views"></main>
+
+<div class="footer">よい山旅を ⛰️ ／ 予定はカレンダーが正・変更があれば口頭優先</div>
+
+<!-- ── 下部タブ ── -->
+<nav class="tabbar" id="tabbar"></nav>
+
+<script>
+/* =========================================================
+   行程データ（Googleカレンダー 2026-07-21〜23 より生成）
+   予定変更時はこのDATAを直すだけで表示に反映される。
+   t: 開始 / te: 終了(省略可) / hl: 強調 / note: タップで展開
+   loc: {q: Googleマップ検索クエリ} / kind:'move' は移動行
+========================================================= */
+const TRIP_START = '2026-07-21';
+const TRIP_END   = '2026-07-23';
+
+const DAYS = [
+  {
+    id:'d1', tab:'7/21', tabIcon:'🚗', date:'2026-07-21', wd:'火',
+    title:'移動日', lead:'真岡 → 佐久 → 茅野 → 駒ヶ根泊',
+    weatherSpots:['komagane'],
+    events:[
+      { t:'07:30', te:'08:00', icon:'🚗', name:'自宅出発', tag:'出発',
+        note:'<b>休憩SA候補（奥様メモ）</b><br>【上信越道】横川SA（規模大・設備充実）／東部湯の丸SA（下り線に「峠の釜めし」ミニチュアガチャ）<br>【長野道】姨捨SA／梓川SA<br>【中央道】諏訪湖SA／駒ヶ岳SA' },
+      { kind:'move', icon:'🛣️', label:'北関東道 → 上信越道 → 佐久', time:'約2h' },
+      { t:'09:00', te:'09:30', icon:'☕', name:'佐久平珈琲', tag:'モーニング',
+        loc:{q:'佐久平珈琲 佐久平ハイウェイショップ下り'} },
+      { kind:'move', icon:'🛣️', label:'中部横断道 → 茅野', time:'約1h20m' },
+      { t:'11:00', te:'11:30', icon:'🥬', name:'たてしな自由農園 茅野店', tag:'買い物',
+        loc:{q:'たてしな自由農園 茅野店'} },
+      { t:'11:30', te:'12:30', icon:'🍜', name:'ランチ【そばきり道玄】', tag:'ランチ',
+        loc:{q:'そばきり道玄 茅野市'} },
+      { kind:'move', icon:'🛣️', label:'中央道で駒ヶ根へ', time:'約50min' },
+      { t:'13:30', te:'14:30', icon:'⛩️', name:'光前寺 参拝', tag:'参拝',
+        loc:{q:'光前寺 駒ヶ根市'},
+        note:'天台宗 別格本山。霊犬<b>早太郎伝説</b>で知られる。杉並木の参道と光苔も見どころ。' },
+      { t:'15:00', te:'15:30', icon:'🍰', name:'休憩【フォレストリングカフェ】', tag:'カフェ',
+        loc:{q:'フォレストリング カフェ 駒ヶ根市'} },
+      { t:'16:30', te:'17:00', icon:'🏨', name:'チェックイン【ルートイン駒ヶ根インター】', hl:true, tag:'宿泊',
+        loc:{q:'ホテルルートイン駒ヶ根インター'},
+        note:'明朝は<b>4:30出発</b>。荷物は登山用と宿用に分けておくと楽。' },
+      { t:'17:30', te:'19:00', icon:'🥩', name:'夕食【鉄板焼きグリーンオックス】', hl:true, tag:'ディナー',
+        loc:{q:'グリーンオックス 駒ヶ根市'} },
+    ]
+  },
+  {
+    id:'d2', tab:'7/22', tabIcon:'⛰️', date:'2026-07-22', wd:'水',
+    title:'登山日', lead:'千畳敷カール → 木曽駒ヶ岳 → 諏訪湖泊',
+    weatherSpots:['senjojiki','komagane'],
+    events:[
+      { t:'04:30', te:'04:45', icon:'🌙', name:'ホテル出発・コンビニで買物', tag:'早朝',
+        note:'朝食＆行動食（おにぎり・雑炊の具など）をここで調達。' },
+      { t:'05:20', icon:'🅿️', name:'菅の台バスセンター 駐車', tag:'駐車 ¥800/日',
+        loc:{q:'菅の台バスセンター 駐車場'} },
+      { t:'05:30', te:'06:15', icon:'🎫', name:'チケット購入・始発バス列に並ぶ',
+        note:'ハイシーズンのため<b>混雑の可能性大</b>。列は早い者勝ち。' },
+      { t:'06:15', te:'06:55', icon:'🚌', name:'路線バスで「しらび平駅」へ', tag:'約40分' },
+      { t:'06:50', te:'07:00', icon:'🚡', name:'ロープウェイで千畳敷へ', tag:'約7分半' },
+      { t:'07:10', icon:'🏔️', name:'千畳敷駅 到着（標高2,612m）', hl:true,
+        note:'<b>すぐに歩き出さないこと。</b>30分ほど景色を見ながら高度順応する。' },
+      { t:'07:40', te:'09:40', icon:'🥾', name:'登山開始', hl:true, tag:'登り 約2h',
+        note:'千畳敷駅 → <b>八丁坂の急登</b> → 乗越浄土 → 中岳 → <b>木曽駒ヶ岳山頂（2,956m）</b>' },
+      { t:'09:40', te:'10:30', icon:'🍙', name:'山頂・お昼休憩', hl:true,
+        note:'絶景を見ながらバーナーでお湯を沸かして<b>雑炊＆おにぎり</b>。' },
+      { t:'10:30', te:'12:00', icon:'⬇️', name:'下山開始（来た道を戻る）',
+        note:'途中の<b>宝剣山荘</b>でコーヒー等の温かいものを購入可。' },
+      { t:'12:10', icon:'🚡', name:'千畳敷駅 帰還' },
+      { t:'13:10', te:'14:00', icon:'🚌', name:'ロープウェイ＆バスで下山' },
+      { t:'14:00', te:'14:15', icon:'🚗', name:'菅の台でマイカー回収',
+        loc:{q:'菅の台バスセンター 駐車場'} },
+      { t:'14:15', te:'15:15', icon:'🛣️', name:'中央道で諏訪方面へ', tag:'約50km / 50min' },
+      { t:'15:30', te:'16:00', icon:'☕', name:'スタバでカフェタイム', tag:'元気があれば',
+        loc:{q:'スターバックス 伊那ナイスロード店'},
+        note:'奥様メモ：「もし元気が余っていたらこのカフェへ」' },
+      { t:'16:30', te:'17:00', icon:'♨️', name:'チェックイン【萃sui-諏訪湖】', hl:true, tag:'宿泊',
+        loc:{q:'萃sui-諏訪湖'},
+        note:'502号室（スタンダードタイプ）。<b>揚げ物を避けるよう伝達済み。</b>' },
+    ]
+  },
+  {
+    id:'d3', tab:'7/23', tabIcon:'⛩️', date:'2026-07-23', wd:'木',
+    title:'諏訪観光・帰路', lead:'諏訪大社二社参り → 諏訪湖絶景 → 帰宅',
+    weatherSpots:['suwa'],
+    events:[
+      { t:'11:00', te:'11:20', icon:'⛩️', name:'諏訪大社 上社本宮', hl:true, tag:'参拝',
+        loc:{q:'諏訪大社 上社本宮 参拝者用駐車場'},
+        note:'日本最古級の神社。森に囲まれた境内の<b>静寂と見事な彫刻</b>が見どころ。' },
+      { kind:'move', icon:'🚗', label:'上社 → 下社へ', time:'約20min' },
+      { t:'12:10', te:'13:00', icon:'⛩️', name:'諏訪大社 下社秋宮', tag:'参拝',
+        loc:{q:'諏訪大社 下社秋宮'},
+        note:'立派な<b>注連縄</b>と、青銅製では日本一大きな<b>狛犬</b>。温泉が出る手水舎も珍しい。' },
+      { t:'13:00', te:'14:00', icon:'🍚', name:'ランチ【お食事処 楪】', tag:'ランチ',
+        loc:{q:'お食事処 楪 諏訪市'} },
+      { t:'13:30', te:'14:00', icon:'🌄', name:'立石公園',
+        loc:{q:'立石公園 諏訪市'},
+        note:'諏訪湖を一望する高台の絶景スポット。<b>アニメ映画の聖地</b>としても知られる。' },
+      { t:'14:00', te:'14:30', icon:'🥬', name:'たてしな自由農園 茅野店', tag:'買い物',
+        loc:{q:'たてしな自由農園 茅野店'} },
+      { t:'14:45', icon:'🚗', name:'諏訪エリア出発・帰路へ', tag:'おつかれさま' },
+    ]
+  },
+];
+
+/* 持ち物チェックリスト（チェック状態は端末に保存される） */
+const CHECKLIST = [
+  { g:'⛰️ 登山装備', items:[
+    ['登山靴',''], ['レインウェア上下','山の天気は急変する'], ['防寒着','山頂は真夏でも10℃前後'],
+    ['帽子・サングラス',''], ['手袋',''], ['ザック・ザックカバー',''],
+    ['飲料水・行動食',''], ['バーナー・コッヘル・ガス','山頂の雑炊用'],
+    ['日焼け止め','標高2,600mの紫外線は強烈'], ['タオル',''], ['モバイルバッテリー',''],
+  ]},
+  { g:'👛 貴重品・書類', items:[
+    ['現金','駐車場¥800＋バス・ロープウェイ代'], ['健康保険証',''], ['運転免許証・ETCカード',''],
+    ['宿の予約確認','ルートイン駒ヶ根／萃sui-諏訪湖'],
+  ]},
+  { g:'🏨 宿・車', items:[
+    ['着替え3日分',''], ['洗面用具・常備薬',''], ['充電ケーブル',''],
+    ['カメラ',''], ['クーラーボックス','たてしな自由農園の野菜・果物用'],
+  ]},
+];
+
+/* 天気取得地点（Open-Meteo・APIキー不要） */
+const WEATHER_SPOTS = {
+  komagane:  { label:'駒ヶ根',        lat:35.7284, lon:137.9339 },
+  senjojiki: { label:'千畳敷 2,612m', lat:35.7797, lon:137.8061, elev:2612 },
+  suwa:      { label:'諏訪',          lat:36.0391, lon:138.1131 },
+};
+
+/* ========================================================= */
+
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mapsUrl = q => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+
+/* ── ビュー生成 ── */
+function buildViews(){
+  const views = $('#views');
+  let html = '';
+  DAYS.forEach((day, di) => {
+    html += `<section class="view" id="view-${day.id}">
+      <div class="day-head">
+        <h2>Day ${di+1}｜${esc(day.title)} <span class="d-date">${day.date.slice(5).replace('-','/')} (${day.wd})</span></h2>
+        <p>${esc(day.lead)}</p>
+      </div>
+      <div class="timeline">`;
+    day.events.forEach((ev, ei) => {
+      if (ev.kind === 'move') {
+        html += `<div class="move"><div class="move-dot"></div>
+          <div class="move-content"><span>${ev.icon}</span><span>${esc(ev.label)}</span>
+          <span class="move-line"></span><span class="move-time">${esc(ev.time||'')}</span></div></div>`;
+        return;
+      }
+      const hasNote = !!ev.note;
+      const time = ev.te ? `${ev.t} – ${ev.te}` : ev.t;
+      html += `<div class="event${ev.hl?' hl':''}${hasNote?' has-note':''}" data-day="${di}" data-ei="${ei}">
+        <div class="event-dot"></div>
+        <div class="event-card">
+          <div class="event-time">${time}<span class="now-slot"></span></div>
+          <div class="event-head">
+            <span class="event-icon">${ev.icon}</span>
+            <span class="event-name">${esc(ev.name)}</span>
+          </div>
+          <div class="event-meta">
+            ${ev.tag ? `<span class="tag${ev.hl?' gold':''}">${esc(ev.tag)}</span>` : ''}
+            ${ev.loc ? `<a class="maplink" href="${mapsUrl(ev.loc.q)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">📍 地図</a>` : ''}
+            ${hasNote ? `<span class="note-hint">タップで詳細 ▾</span>` : ''}
+          </div>
+          ${hasNote ? `<div class="event-note"><div class="note-inner">${ev.note}</div></div>` : ''}
+        </div>
+      </div>`;
+    });
+    html += `</div></section>`;
+  });
+
+  /* 持ち物ビュー */
+  html += `<section class="view" id="view-check">
+    <div class="day-head"><h2>持ち物チェック</h2><p>チェック状態はこの端末に保存されます</p></div>
+    <div class="check-wrap">
+      <div class="check-progress">
+        <div class="cp-label"><span>準備の進み具合</span><span id="cpCount"></span></div>
+        <div class="cp-bar"><div class="cp-fill" id="cpFill"></div></div>
+      </div>
+      <div id="checkGroups"></div>
+      <button class="check-reset" id="checkReset">すべてリセット</button>
+    </div>
+  </section>`;
+  views.innerHTML = html;
+
+  /* 詳細ノートの開閉 */
+  document.querySelectorAll('.event.has-note .event-card').forEach(card => {
+    card.addEventListener('click', () => card.closest('.event').classList.toggle('open'));
+  });
+}
+
+/* ── タブ ── */
+const TABS = DAYS.map((d,i)=>({id:d.id, icon:d.tabIcon, label:`${d.tab} ${d.title}`}))
+  .concat([{id:'check', icon:'🎒', label:'持ち物'}]);
+
+function buildTabs(){
+  $('#tabbar').innerHTML = TABS.map(t =>
+    `<button class="tab" data-tab="${t.id}"><span class="t-icon">${t.icon}</span><span class="t-label">${esc(t.label)}</span></button>`
+  ).join('');
+  document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => selectTab(b.dataset.tab)));
+}
+
+function selectTab(id){
+  document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+  document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'view-'+id));
+  renderWeather(id);
+  renderNow(id);
+  window.scrollTo({top: 0});
+}
+
+/* ── カウントダウン ── */
+function renderCountdown(){
+  const now = new Date();
+  const start = new Date(TRIP_START + 'T00:00:00+09:00');
+  const end   = new Date(TRIP_END   + 'T23:59:59+09:00');
+  const el = $('#countdown');
+  if (now < start) {
+    const d = Math.ceil((start - now) / 86400000);
+    el.textContent = d === 1 ? '出発は明日 🎒' : `出発まで あと ${d} 日`;
+  } else if (now <= end) {
+    const dayN = Math.floor((now - start) / 86400000) + 1;
+    el.textContent = `旅行 ${dayN} 日目 ⛰️`;
+  } else {
+    el.textContent = 'おつかれさまでした 🍵';
+  }
+}
+
+/* 今日が旅行中ならその日のタブを初期表示 */
+function initialTab(){
+  const today = new Date().toLocaleDateString('sv-SE', {timeZone:'Asia/Tokyo'}); // YYYY-MM-DD
+  const hit = DAYS.find(d => d.date === today);
+  return hit ? hit.id : DAYS[0].id;
+}
+
+/* ── いまハイライト＆NEXTチップ（当日のみ動作） ── */
+function renderNow(activeId){
+  document.querySelectorAll('.event.now').forEach(e => e.classList.remove('now'));
+  document.querySelectorAll('.now-slot').forEach(e => e.innerHTML = '');
+  const chip = $('#nextChip');
+  chip.classList.remove('show');
+
+  const today = new Date().toLocaleDateString('sv-SE', {timeZone:'Asia/Tokyo'});
+  const di = DAYS.findIndex(d => d.date === today);
+  if (di < 0 || DAYS[di].id !== activeId) return;
+
+  const now = new Date();
+  const hm = now.toLocaleTimeString('ja-JP', {timeZone:'Asia/Tokyo', hour:'2-digit', minute:'2-digit', hour12:false});
+  const evs = DAYS[di].events.filter(e => !e.kind);
+  let current = null, next = null;
+  for (const e of evs) {
+    const endT = e.te || addMin(e.t, 30); // 終了未定は30分とみなす
+    if (e.t <= hm && hm < endT) current = e;
+    if (!next && e.t > hm) next = e;
+  }
+  if (current) {
+    const el = document.querySelector(`.event[data-day="${di}"][data-ei="${DAYS[di].events.indexOf(current)}"]`);
+    if (el) {
+      el.classList.add('now');
+      el.querySelector('.now-slot').innerHTML = '<span class="now-badge">いま</span>';
+    }
+  }
+  if (next) {
+    const diff = minDiff(hm, next.t);
+    chip.innerHTML = `<div class="inner"><span class="lbl">NEXT</span><span>${next.icon} ${esc(next.name)}</span><span style="margin-left:auto;font-weight:700;color:var(--accent)">あと${diff}分</span></div>`;
+    chip.classList.add('show');
+  }
+}
+function addMin(hm, m){ const [h,mi] = hm.split(':').map(Number); const t = h*60+mi+m; return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0'); }
+function minDiff(a, b){ const [ah,am]=a.split(':').map(Number), [bh,bm]=b.split(':').map(Number); return (bh*60+bm)-(ah*60+am); }
+
+/* ── 天気（Open-Meteo）── */
+const WCODE = c => c===0?'☀️':c<=2?'🌤️':c===3?'☁️':c<=48?'🌫️':c<=57?'🌦️':c<=67?'🌧️':c<=77?'🌨️':c<=82?'🌦️':'⛈️';
+let weatherData = null;
+
+async function fetchWeather(){
+  /* 1時間キャッシュ：山で圏外でも直近取得分を表示できるように */
+  try {
+    const cached = JSON.parse(localStorage.getItem('shiori-weather') || 'null');
+    if (cached && Date.now() - cached.at < 3600000) { weatherData = cached.data; return; }
+  } catch(e){}
+  const results = {};
+  await Promise.allSettled(Object.entries(WEATHER_SPOTS).map(async ([key, s]) => {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}`
+      + (s.elev ? `&elevation=${s.elev}` : '')
+      + `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max`
+      + `&timezone=Asia%2FTokyo&start_date=${TRIP_START}&end_date=${TRIP_END}`;
+    const r = await fetch(url);
+    if (r.ok) results[key] = (await r.json()).daily;
+  }));
+  if (Object.keys(results).length) {
+    weatherData = results;
+    try { localStorage.setItem('shiori-weather', JSON.stringify({at:Date.now(), data:results})); } catch(e){}
+  }
+}
+
+function renderWeather(activeId){
+  const box = $('#weather');
+  box.classList.remove('show');
+  const day = DAYS.find(d => d.id === activeId);
+  if (!day || !weatherData) return;
+  const di = DAYS.indexOf(day);
+  const cards = day.weatherSpots.map(key => {
+    const d = weatherData[key];
+    const s = WEATHER_SPOTS[key];
+    if (!d || d.weather_code?.[di] == null) return '';
+    return `<div class="wcard">
+      <div class="wl">${esc(s.label)}</div>
+      <div class="wi">${WCODE(d.weather_code[di])}</div>
+      <div class="wt">${Math.round(d.temperature_2m_max[di])}° <span class="lo">/ ${Math.round(d.temperature_2m_min[di])}°</span></div>
+      <div class="wp">☔ ${d.precipitation_probability_max[di] ?? '-'}%</div>
+    </div>`;
+  }).join('');
+  if (cards.trim()) {
+    box.innerHTML = `<div class="weather-cards">${cards}</div><div class="weather-note">${day.date.slice(5).replace('-','/')} の予報（Open-Meteo）</div>`;
+    box.classList.add('show');
+  }
+}
+
+/* ── チェックリスト ── */
+const CK = 'shiori-check-senjojiki-v1';
+function loadChecks(){ try { return JSON.parse(localStorage.getItem(CK) || '{}'); } catch(e){ return {}; } }
+function saveChecks(s){ try { localStorage.setItem(CK, JSON.stringify(s)); } catch(e){} }
+
+function buildChecklist(){
+  const state = loadChecks();
+  $('#checkGroups').innerHTML = CHECKLIST.map((grp, gi) =>
+    `<div class="check-group"><h3>${esc(grp.g)}</h3>` +
+    grp.items.map((it, ii) => {
+      const id = `${gi}-${ii}`;
+      return `<div class="check-item${state[id]?' done':''}" data-id="${id}">
+        <span class="box">✓</span>
+        <span><span class="ci-label">${esc(it[0])}</span>${it[1]?`<div class="ci-note">${esc(it[1])}</div>`:''}</span>
+      </div>`;
+    }).join('') + `</div>`
+  ).join('');
+  document.querySelectorAll('.check-item').forEach(el => el.addEventListener('click', () => {
+    el.classList.toggle('done');
+    const s = loadChecks();
+    s[el.dataset.id] = el.classList.contains('done');
+    saveChecks(s);
+    updateProgress();
+  }));
+  $('#checkReset').addEventListener('click', () => {
+    if (!confirm('チェックをすべてリセットしますか？')) return;
+    saveChecks({});
+    document.querySelectorAll('.check-item').forEach(el => el.classList.remove('done'));
+    updateProgress();
+  });
+  updateProgress();
+}
+function updateProgress(){
+  const total = document.querySelectorAll('.check-item').length;
+  const done = document.querySelectorAll('.check-item.done').length;
+  $('#cpCount').textContent = `${done} / ${total}`;
+  $('#cpFill').style.width = total ? (done/total*100)+'%' : '0%';
+}
+
+/* ── テーマ切替（auto → light → dark） ── */
+const THEMES = ['auto','light','dark'];
+const TICON = {auto:'🌗', light:'☀️', dark:'🌙'};
+function applyTheme(t){
+  if (t === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', t);
+  $('#themeBtn').textContent = TICON[t];
+  try { localStorage.setItem('shiori-theme', t); } catch(e){}
+}
+function initTheme(){
+  let t = 'auto';
+  try { t = localStorage.getItem('shiori-theme') || 'auto'; } catch(e){}
+  applyTheme(t);
+  $('#themeBtn').addEventListener('click', () => {
+    const cur = (localStorage.getItem('shiori-theme') || 'auto');
+    applyTheme(THEMES[(THEMES.indexOf(cur)+1) % THEMES.length]);
+  });
+}
+
+/* ── 起動 ── */
+buildViews();
+buildTabs();
+buildChecklist();
+initTheme();
+renderCountdown();
+const startTab = initialTab();
+selectTab(startTab);
+fetchWeather().then(() => {
+  const active = document.querySelector('.tab.active');
+  if (active) renderWeather(active.dataset.tab);
+});
+/* 1分ごとに「いま」表示とカウントダウンを更新 */
+setInterval(() => {
+  renderCountdown();
+  const active = document.querySelector('.tab.active');
+  if (active) renderNow(active.dataset.tab);
+}, 60000);
+</script>
+</body>
+</html>
